@@ -1,10 +1,14 @@
+require('dotenv').config()
+
 import * as React from 'react'
 import * as ReactDOM from 'react-dom'
-import { createBrowserHistory } from 'history'
+import { Provider } from 'react-redux'
 import { Router } from 'react-router'
+import { createBrowserHistory } from 'history'
 import { ThemeProvider } from 'styled-components'
 
-import { App } from './App'
+import store from './store/store'
+import App from './App'
 
 const history = createBrowserHistory()
 
@@ -20,9 +24,11 @@ const lightTheme = {
 
 ReactDOM.render(
   <ThemeProvider theme={lightTheme}>
-    <Router history={history}>
-      <App />
-    </Router>
+    <Provider store={store}>
+      <Router history={history}>
+        <App />
+      </Router>
+    </Provider>
   </ThemeProvider>,
   document.getElementById('root')
 )
