@@ -6,7 +6,7 @@ import * as api from './api'
 interface HeroState {
   findRequest: {
     state: 'initial' | 'loading' | 'success' | 'error'
-    data?: Hero
+    data?: Hero[]
     error?: undefined | Error
   }
   favourites: Hero[]

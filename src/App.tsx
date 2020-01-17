@@ -1,13 +1,15 @@
 import * as React from 'react'
+import { Route, Switch } from 'react-router'
 
 import Title from './components/Title'
-import Hidden from './components/Hidden'
-import { API_TOKEN } from './constants'
+import SearchPage from './pages/SearchPage'
 
 const App = () => (
   <>
     <Title>Super Heroes Search App</Title>
-    <Hidden>{API_TOKEN}</Hidden>
+    <Switch>
+      <Route path="/" component={SearchPage} />
+    </Switch>
   </>
 )
 
