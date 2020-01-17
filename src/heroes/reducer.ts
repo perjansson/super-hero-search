@@ -4,47 +4,52 @@ import { AppThunk } from 'store/store'
 import * as api from './api'
 
 interface HeroState {
-  data: Hero[]
-  selectedHero?: Hero
-  fetchState: undefined | 'loading' | 'error'
-  error?: undefined | Error
+  findRequest: {
+    state: 'initial' | 'loading' | 'success' | 'error'
+    data?: Hero
+    error?: undefined | Error
+  }
+  favourites: Hero[]
 }
 
 const initialState: HeroState = {
-  data: [],
-  fetchState: undefined,
+  findRequest: {
+    state: 'initial',
+    data: undefined,
+  },
+  favourites: [],
 }
 
 const heroesSlice = createSlice({
   name: 'heroes',
   initialState,
   reducers: {
-    addHero(state, action: PayloadAction<Hero>) {
-      const hero = action.payload
-      state.data.push(hero)
-    },
-    removeHero(state, action: PayloadAction<Hero>) {
-      state.data.splice(
-        state.data.findIndex(hero => hero.id === action.payload.id),
-        1
-      )
-    },
     findSuperHeroRequest(state) {
-      state.fetchState = 'loading'
+      state.findRequest.state = 'loading'
     },
     findSuperHeroRequestSuccess(state, action) {
-      state.selectedHero = action.payload
+      state.findRequest.state = 'success'
+      state.findRequest.data = action.payload
     },
     findSuperHeroRequestError(state, action) {
-      state.fetchState = 'error'
-      state.error = action.payload
+      state.findRequest.state = 'error'
+      state.findRequest.error = action.payload
+    },
+    setFavourite(state, action: PayloadAction<Hero>) {
+      state.favourites.push(action.payload)
+    },
+    removeFavourite(state, action: PayloadAction<Hero>) {
+      state.favourites.splice(
+        state.favourites.findIndex(hero => hero.id === action.payload.id),
+        1
+      )
     },
   },
 })
 
 export const {
-  addHero,
-  removeHero,
+  setFavourite,
+  removeFavourite,
   findSuperHeroRequest,
   findSuperHeroRequestSuccess,
   findSuperHeroRequestError,
