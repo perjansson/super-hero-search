@@ -1,6 +1,8 @@
 import * as React from 'react'
-import { Hero } from '../types'
 import styled from 'styled-components'
+
+import { Hero } from '../types'
+import SearchResultItem from './SearchResultItem'
 
 const Wrapper = styled.div`
   display: flex;
@@ -8,13 +10,6 @@ const Wrapper = styled.div`
   align-items: center;
   justify-content: center;
 `
-interface SearchResultItemProps {
-  hero: Hero
-}
-
-const SearchResultItem = ({ hero }: SearchResultItemProps) => (
-  <div>{hero.name}</div>
-)
 
 interface SearchResultProps {
   results: Hero[]
