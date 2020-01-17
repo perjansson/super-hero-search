@@ -4,10 +4,10 @@ import { useDispatch } from 'react-redux'
 import { useDebounce } from 'use-lodash-debounce'
 import styled from 'styled-components'
 
-import { useTypedSelector } from '../store/reducer'
-import { findSuperHero } from './reducer'
-import Error from '../components/Error'
-import Loading from '../components/Loading'
+import { useTypedSelector } from '../../store/reducer'
+import { findSuperHero } from '../reducer'
+import Error from '../../components/Error'
+import Loading from '../../components/Loading'
 import SearchInput from './SearchInput'
 import SearchResult from './SearchResult'
 
@@ -50,7 +50,7 @@ const SearchHeroContainer = () => {
         placeholder="type to search..."
       />
       {state === 'loading' && <Loading />}
-      {state === 'error' && error && <Error error={error} />}
+      {state === 'error' && error && !query && <Error error={error} />}
       {state === 'success' && data && <SearchResult results={data.results} />}
     </Wrapper>
   )

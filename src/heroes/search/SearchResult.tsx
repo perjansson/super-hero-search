@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-import { Hero } from '../types'
+import { Hero } from '../../types'
 import SearchResultItem from './SearchResultItem'
 
 const Wrapper = styled.div`

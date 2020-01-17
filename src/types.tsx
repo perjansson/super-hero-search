@@ -46,7 +46,7 @@ interface Image {
 }
 
 export interface Hero {
-  id: number
+  id: string
   name: string
   powerstats: PowerStats
   biography: Biography

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import styled from 'styled-components'
 
-import SearchHeroContainer from '../heroes/SearchHeroContainer'
+import SearchHeroContainer from '../heroes/search/SearchHeroContainer'
 
 const PageWrapper = styled.div`
   margin-top: 48px;

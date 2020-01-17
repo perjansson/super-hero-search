@@ -148,6 +148,7 @@ module.exports = () => {
       hot: true,
       inline: true,
       historyApiFallback: {
+        index: 'index.html',
         disableDotRule: true,
       },
       stats: 'minimal',
