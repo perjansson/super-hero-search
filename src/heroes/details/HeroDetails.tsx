@@ -3,6 +3,10 @@ import styled from 'styled-components'
 
 import { Hero } from '../../types'
 
+const Image = styled.img`
+  margin-bottom: 40px;
+`
+
 const DetailTupleWrapper = styled.div`
   color: ${props => props.theme.colors.secondary};
   font-size: 0.7em;
@@ -25,9 +29,9 @@ interface Props {
 const HeroDetails = ({ hero }: Props) => {
   return (
     <>
+      <Image src={hero.image.url} />
       <DetailTuple label="id" value={hero.id} />
       <DetailTuple label="gender" value={hero.appearance.gender} />
-      <img src={hero.image.url}></img>
     </>
   )
 }

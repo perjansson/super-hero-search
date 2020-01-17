@@ -7,6 +7,7 @@ import { ThemeProvider } from 'styled-components'
 
 import store from './store/store'
 import App from './App'
+import ErrorBoundary from './components/ErrorBoundary'
 
 const history = createBrowserHistory()
 
@@ -21,12 +22,14 @@ const lightTheme = {
 }
 
 ReactDOM.render(
-  <ThemeProvider theme={lightTheme}>
-    <Provider store={store}>
-      <Router history={history}>
-        <App />
-      </Router>
-    </Provider>
-  </ThemeProvider>,
+  <ErrorBoundary>
+    <ThemeProvider theme={lightTheme}>
+      <Provider store={store}>
+        <Router history={history}>
+          <App />
+        </Router>
+      </Provider>
+    </ThemeProvider>
+  </ErrorBoundary>,
   document.getElementById('root')
 )
