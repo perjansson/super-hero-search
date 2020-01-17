@@ -10,6 +10,6 @@ interface Props {
   error: Error
 }
 
-const Error = ({ error }: Props) => <Wrapper>Error :( {error?.message}</Wrapper>
+const Error = ({ error }: Props) => <Wrapper>{error?.message}</Wrapper>
 
 export default Error

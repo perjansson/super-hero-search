@@ -6,12 +6,12 @@ const Wrapper = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
+  height: 40px;
+  width: 100%;
 `
 
-const Name = styled.div``
-
-const FullName = styled.div`
-  color: ${props => props.theme.colors.quinary};
+const Name = styled.div`
+  color: ${props => props.theme.colors.secondary};
   font-size: 0.7em;
 `
 
@@ -22,7 +22,6 @@ interface SearchResultItemProps {
 const SearchResultItem = ({ hero }: SearchResultItemProps) => (
   <Wrapper>
     <Name>{hero.name}</Name>
-    <FullName>{hero.biography['full-name']}</FullName>
   </Wrapper>
 )
 

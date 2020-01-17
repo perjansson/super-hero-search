@@ -58,8 +58,12 @@ export const {
 export const findSuperHero = (query: string): AppThunk => async dispatch => {
   try {
     dispatch(findSuperHeroRequest())
-    const superHero = await api.findSuperHero(query)
-    dispatch(findSuperHeroRequestSuccess(superHero))
+    const searchResult = await api.findSuperHero(query)
+    if (searchResult.response === 'error') {
+      dispatch(findSuperHeroRequestError({ message: searchResult.error }))
+    } else if (searchResult['results-for'] === query) {
+      dispatch(findSuperHeroRequestSuccess(searchResult))
+    }
   } catch (error) {
     dispatch(findSuperHeroRequestError(error))
   }

@@ -7,6 +7,7 @@ import styled from 'styled-components'
 import { useTypedSelector } from '../store/reducer'
 import { findSuperHero } from './reducer'
 import Error from '../components/Error'
+import Loading from '../components/Loading'
 import SearchInput from './SearchInput'
 import SearchResult from './SearchResult'
 
@@ -23,7 +24,7 @@ const Wrapper = styled.div`
 
 const SearchHeroContainer = () => {
   const [query, setQuery] = useState('')
-  const debouncedQuery = useDebounce(query, 1000)
+  const debouncedQuery = useDebounce(query, 500)
 
   const { state, data, error } = useTypedSelector(
     state => state.heroes.findRequest
@@ -48,6 +49,7 @@ const SearchHeroContainer = () => {
         onChange={handleOnChange}
         placeholder="type to search..."
       />
+      {state === 'loading' && <Loading />}
       {state === 'error' && error && <Error error={error} />}
       {state === 'success' && data && <SearchResult results={data.results} />}
     </Wrapper>

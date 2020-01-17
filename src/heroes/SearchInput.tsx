@@ -13,7 +13,6 @@ const Input = styled.input`
   color: ${props => props.theme.colors.tertiary};
   border: none;
   border-bottom: ${props => `1px solid ${props.theme.colors.tertiary}`};
-  padding: 0 10px;
   margin: 0;
   width: 80%;
   background: none;

@@ -57,7 +57,8 @@ export interface Hero {
 }
 
 export interface HeroSearchResult {
-  response: 'success'
+  response: 'success' | 'error'
   'results-for': string
   results: Hero[]
+  error: string
 }
