@@ -1,12 +1,12 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
-import { Hero } from 'types'
+import { Hero, HeroSearchResult } from 'types'
 import { AppThunk } from 'store/store'
 import * as api from './api'
 
 interface HeroState {
   findRequest: {
     state: 'initial' | 'loading' | 'success' | 'error'
-    data?: Hero[]
+    data?: HeroSearchResult
     error?: undefined | Error
   }
   favourites: Hero[]

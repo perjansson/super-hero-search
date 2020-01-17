@@ -49,7 +49,7 @@ const SearchHeroContainer = () => {
         placeholder="type to search..."
       />
       {state === 'error' && error && <Error error={error} />}
-      {state === 'success' && data && <SearchResult result={data} />}
+      {state === 'success' && data && <SearchResult results={data.results} />}
     </Wrapper>
   )
 }
