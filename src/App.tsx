@@ -5,7 +5,7 @@ import styled from 'styled-components'
 
 const SearchPage = lazy(() => import('./pages/SearchPage'))
 import HeroPage from './pages/HeroPage'
-import Title from './components/Title'
+import Header from './components/Header'
 
 const LoadingIndicator = styled.div`
   display: flex;
@@ -15,21 +15,27 @@ const LoadingIndicator = styled.div`
 
 const LoadingMessage = () => <div>...</div>
 
+const Main = styled.main`
+  padding: 20px;
+`
+
 const App = () => (
   <>
-    <Title>Super Heroes Search App</Title>
-    <Suspense
-      fallback={
-        <LoadingIndicator>
-          <LoadingMessage />
-        </LoadingIndicator>
-      }
-    >
-      <Switch>
-        <Route path="/" exact component={SearchPage} />
-        <Route path="/heroes/:id" component={HeroPage} />
-      </Switch>
-    </Suspense>
+    <Header>Super Heroes Search App</Header>
+    <Main>
+      <Suspense
+        fallback={
+          <LoadingIndicator>
+            <LoadingMessage />
+          </LoadingIndicator>
+        }
+      >
+        <Switch>
+          <Route path="/" exact component={SearchPage} />
+          <Route path="/heroes/:id" component={HeroPage} />
+        </Switch>
+      </Suspense>
+    </Main>
   </>
 )
 

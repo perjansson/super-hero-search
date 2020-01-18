@@ -5,7 +5,6 @@ import { RouteComponentProps } from 'react-router'
 import HeroDetailsContainer from '../heroes/details/HeroDetailsContainer'
 
 const PageWrapper = styled.div`
-  margin-top: 48px;
   display: flex;
   justify-content: center;
 `

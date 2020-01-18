@@ -13,12 +13,12 @@ const Wrapper = styled.div`
 `
 
 const Name = styled.div`
-  color: ${props => props.theme.colors.secondary};
   font-size: 0.7em;
 `
 
 const StyledLink = styled(Link)`
   text-decoration: none;
+  color: ${props => props.theme.colors.tertiary};
   &:hover ${Name} {
     color: ${props => props.theme.colors.quaternary};
   }
