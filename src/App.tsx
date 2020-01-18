@@ -13,7 +13,7 @@ const LoadingIndicator = styled.div`
   align-items: center;
 `
 
-const LoadingMessage = () => <div>...</div>
+const LoadingMessage = () => <div></div>
 
 const Main = styled.main`
   padding: 20px;
