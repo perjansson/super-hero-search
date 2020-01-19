@@ -11,6 +11,7 @@ const outputPath = path.join(__dirname, './build')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin')
 
 module.exports = () => {
   const env = dotenv.config().parsed
@@ -136,6 +137,10 @@ module.exports = () => {
             ? package.keywords.join(',')
             : undefined,
         },
+      }),
+      new WorkboxWebpackPlugin.InjectManifest({
+        swSrc: './src/serviceWorker.js',
+        swDest: 'sw.js',
       }),
     ],
     devServer: {
