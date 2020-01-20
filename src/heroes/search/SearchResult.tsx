@@ -4,7 +4,7 @@ import styled from 'styled-components'
 import { Hero } from '../../types'
 import SearchResultItem from './SearchResultItem'
 
-const Wrapper = styled.div`
+const Wrapper = styled.div.attrs({ 'data-testid': 'search-result' })`
   display: flex;
   flex-direction: column;
   align-items: center;

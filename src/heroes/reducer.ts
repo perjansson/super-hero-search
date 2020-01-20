@@ -7,7 +7,7 @@ interface HeroesMap {
   [key: string]: Hero
 }
 
-interface HeroState {
+export interface HeroesState {
   findRequest: {
     query: string
     state: 'initial' | 'loading' | 'success' | 'error'
@@ -18,7 +18,7 @@ interface HeroState {
   favourites: Hero[]
 }
 
-const initialState: HeroState = {
+export const initialState: HeroesState = {
   findRequest: {
     query: '',
     state: 'initial',

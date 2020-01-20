@@ -14,7 +14,7 @@ const fadeIn = keyframes`
 `
 
 const Fade = styled.div`
-  color: ${props => props.theme.colors.tertiary};
+  color: ${props => props?.theme?.colors?.tertiary};
   animation: ${fadeIn} 0.5s linear;
 `
 

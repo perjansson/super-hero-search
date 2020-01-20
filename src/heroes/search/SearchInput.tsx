@@ -3,23 +3,23 @@ import styled from 'styled-components'
 
 interface Props {
   value?: string
+  placeholder?: string
   onChange: (query: string) => void
-  placeholder: string
 }
 
-const Input = styled.input`
+const Input = styled.input.attrs({ 'data-testid': 'search-input' })`
   text-align: center;
   font-size: 1.4em;
-  color: ${props => props.theme.colors.tertiary};
+  color: ${props => props?.theme?.colors?.tertiary};
   border: none;
-  border-bottom: ${props => `1px solid ${props.theme.colors.tertiary}`};
+  border-bottom: ${props => `1px solid ${props?.theme?.colors?.tertiary}`};
   margin: 0;
   width: 80%;
   background: none;
   outline: none;
 
   &:focus {
-    border-bottom: ${props => `4px solid ${props.theme.colors.tertiary}`};
+    border-bottom: ${props => `4px solid ${props?.theme?.colors?.tertiary}`};
   }
 `
 
