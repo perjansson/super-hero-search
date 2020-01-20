@@ -5,7 +5,9 @@
   "description": "A frontend using with React, Redux and Typescript etc, etc....",
   "homepage": "https://super-hero-search.netlify.com",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm run test:unit",
+    "test:unit": "jest",
+    "test:unit:watch": "jest --watch",
     "start": "webpack-dev-server --mode development --hot --progress --color --port 1337",
     "build": "webpack -p --progress --colors",
     "build:ci": "node ./scripts/create-env.js && npm run build"
@@ -17,6 +19,7 @@
   ],
   "dependencies": {
     "@reduxjs/toolkit": "^1.2.2",
+    "@types/jest": "^24.9.0",
     "dotenv": "^8.2.0",
     "lodash.debounce": "^4.0.8",
     "react": "^16.12.0",
@@ -29,6 +32,11 @@
   },
   "devDependencies": {
     "@babel/core": "^7.8.3",
+    "@babel/preset-env": "^7.8.3",
+    "@babel/preset-react": "^7.8.3",
+    "@babel/preset-typescript": "^7.8.3",
+    "@testing-library/jest-dom": "^5.0.0",
+    "@testing-library/react": "^9.4.0",
     "@types/history": "^4.7.4",
     "@types/lodash": "^4.14.149",
     "@types/node": "^10.12.18",
@@ -42,6 +50,7 @@
     "@types/webpack-env": "1.15.0",
     "@typescript-eslint/eslint-plugin": "^2.16.0",
     "@typescript-eslint/parser": "^2.16.0",
+    "babel-jest": "^24.9.0",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^3.4.2",
@@ -52,6 +61,7 @@
     "file-loader": "^5.0.2",
     "html-loader": "^1.0.0-alpha.0",
     "html-webpack-plugin": "^4.0.0-beta.11",
+    "jest": "^24.9.0",
     "mini-css-extract-plugin": "^0.9.0",
     "postcss": "^7.0.26",
     "postcss-browser-reporter": "^0.6.0",
