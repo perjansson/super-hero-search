@@ -9,4 +9,10 @@ describe('Error', () => {
     const { getByRole } = render(<Error error={error} />)
     expect(getByRole('alert')).toHaveTextContent(message)
   })
+
+  test('should render empty error text if error message is missing', () => {
+    const error = { name: 'Network error' } as Error
+    const { getByRole } = render(<Error error={error} />)
+    expect(getByRole('alert')).toHaveTextContent('')
+  })
 })
