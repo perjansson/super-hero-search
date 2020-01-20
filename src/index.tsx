@@ -9,7 +9,8 @@ import store from './store/store'
 import App from './App'
 import ErrorBoundary from './components/ErrorBoundary'
 
-if ('serviceWorker' in navigator) {
+if (process.env.NODE_ENV === 'production' && 'serviceWorker' in navigator) {
+  console.log('Will install ServiceWorker')
   window.addEventListener('load', () => {
     navigator.serviceWorker
       .register('/sw.js')
