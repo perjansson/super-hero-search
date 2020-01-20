@@ -9,7 +9,7 @@ interface HeroesMap {
 
 interface HeroState {
   findRequest: {
-    query?: string
+    query: string
     state: 'initial' | 'loading' | 'success' | 'error'
     data?: HeroSearchResult
     error?: undefined | Error
@@ -20,6 +20,7 @@ interface HeroState {
 
 const initialState: HeroState = {
   findRequest: {
+    query: '',
     state: 'initial',
     data: undefined,
   },

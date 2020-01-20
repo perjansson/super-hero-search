@@ -1,7 +1,7 @@
 import * as React from 'react'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { useDebounce } from 'use-lodash-debounce'
+import debounce from 'lodash/debounce'
 import styled from 'styled-components'
 
 import { useTypedSelector } from '../../store/reducer'
@@ -23,34 +23,32 @@ const Wrapper = styled.div`
 `
 
 const SearchHeroContainer = () => {
-  const [query, setQuery] = useState('')
-  const debouncedQuery = useDebounce(query, 500)
-
-  const { state, data, error } = useTypedSelector(
+  const { state, query, data, error } = useTypedSelector(
     state => state.heroes.findRequest
   )
 
-  const handleOnChange = (query: string) => {
-    setQuery(query)
-  }
+  const [inputQuery, setInputQuery] = useState(query)
 
   const dispatch = useDispatch()
-  useEffect(() => {
-    const noInitialSearch = !(state === 'initial' && query === '')
-    if (noInitialSearch) {
-      dispatch(findSuperHero(query))
-    }
-  }, [debouncedQuery])
+  const debouncedFindSuperHero = debounce(
+    query => dispatch(findSuperHero(query)),
+    1000
+  )
+
+  const handleOnChange = (query: string) => {
+    setInputQuery(query)
+    debouncedFindSuperHero(query)
+  }
 
   return (
     <Wrapper>
       <SearchInput
-        value={query}
+        value={inputQuery}
         onChange={handleOnChange}
         placeholder="type to search..."
       />
       {state === 'loading' && <Loading />}
-      {state === 'error' && error && !query && <Error error={error} />}
+      {state === 'error' && error && inputQuery && <Error error={error} />}
       {state === 'success' && data && <SearchResult results={data.results} />}
     </Wrapper>
   )
