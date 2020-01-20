@@ -5,6 +5,7 @@
   "description": "A frontend using with React, Redux and Typescript etc, etc....",
   "homepage": "https://super-hero-search.netlify.com",
   "scripts": {
+    "predeploy": "npm run build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server --mode development --hot --progress --color --port 1337",
     "build": "webpack -p --progress --colors",
