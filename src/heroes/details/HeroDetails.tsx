@@ -16,6 +16,7 @@ interface DetailTupleProps {
   label: string
   value: string
 }
+
 const DetailTuple = ({ label, value }: DetailTupleProps) => (
   <DetailTupleWrapper>
     {label},{value}
