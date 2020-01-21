@@ -1,5 +1,4 @@
-import * as React from 'react'
-import { Suspense, lazy } from 'react'
+import React, { Suspense, lazy } from 'react'
 import { Route, Switch } from 'react-router'
 import styled from 'styled-components'
 

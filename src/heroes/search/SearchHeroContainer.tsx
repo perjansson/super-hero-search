@@ -1,5 +1,4 @@
-import * as React from 'react'
-import { useState, useRef, useEffect } from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import debounce from 'lodash/debounce'
 import styled from 'styled-components'
