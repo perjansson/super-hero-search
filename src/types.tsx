@@ -48,12 +48,12 @@ interface Image {
 export interface Hero {
   id: string
   name: string
-  powerstats: PowerStats
-  biography: Biography
-  appearance: Appearance
-  work: Work
-  connections: Connections
-  image: Image
+  powerstats?: PowerStats
+  biography?: Biography
+  appearance?: Appearance
+  work?: Work
+  connections?: Connections
+  image?: Image
 }
 
 export interface HeroSearchResult {
