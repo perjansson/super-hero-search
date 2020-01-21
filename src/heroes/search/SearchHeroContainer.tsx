@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 import { useDispatch } from 'react-redux'
 import debounce from 'lodash/debounce'
 import styled from 'styled-components'
@@ -30,14 +30,13 @@ const SearchHeroContainer = () => {
   const [inputQuery, setInputQuery] = useState(query)
 
   const dispatch = useDispatch()
-  const debouncedFindSuperHero = debounce(
-    query => dispatch(findSuperHero(query)),
-    1000
+  const debouncedFindSuperHero = useRef(
+    debounce((query: string) => dispatch(findSuperHero(query)), 1000)
   )
 
   const handleOnChange = (query: string) => {
     setInputQuery(query)
-    debouncedFindSuperHero(query)
+    debouncedFindSuperHero.current(query)
   }
 
   return (
@@ -45,7 +44,7 @@ const SearchHeroContainer = () => {
       <SearchInput
         value={inputQuery}
         onChange={handleOnChange}
-        placeholder="type to search..."
+        placeholder="type to search...."
       />
       {state === 'loading' && <Loading />}
       {state === 'error' && error && inputQuery && <Error error={error} />}

@@ -1,4 +1,11 @@
 import * as React from 'react'
+import styled from 'styled-components'
+
+const ErrorMessage = styled.h1`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`
 
 interface Props {
   children: React.ReactNode
@@ -17,8 +24,7 @@ class ErrorBoundary extends React.Component<Props> {
 
   render() {
     if (this.state.hasError) {
-      // You can render any custom fallback UI
-      return <h1>Something went wrong.</h1>
+      return <ErrorMessage>Something went wrong.</ErrorMessage>
     }
 
     return this.props.children
