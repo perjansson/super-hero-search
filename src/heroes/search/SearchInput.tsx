@@ -1,11 +1,12 @@
 import * as React from 'react'
+import {
+  useRef,
+  useImperativeHandle,
+  forwardRef,
+  RefForwardingComponent,
+  ChangeEvent,
+} from 'react'
 import styled from 'styled-components'
-
-interface Props {
-  value?: string
-  placeholder?: string
-  onChange: (query: string) => void
-}
 
 const Input = styled.input.attrs({ 'data-testid': 'search-input' })`
   text-align: center;
@@ -23,13 +24,42 @@ const Input = styled.input.attrs({ 'data-testid': 'search-input' })`
   }
 `
 
-const SearchInput = ({ value, onChange, ...rest }: Props) => {
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+interface Props {
+  value?: string
+  placeholder?: string
+  onChange: (query: string) => void
+}
+
+export interface SearchInputHandles {
+  focus(): void
+}
+
+const SearchInput: RefForwardingComponent<SearchInputHandles, Props> = (
+  { value, onChange, ...rest }: Props,
+  ref
+) => {
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     const newValue = event.target.value
     onChange(newValue)
   }
 
-  return <Input value={value} onChange={handleInputChange} {...rest} />
+  const inputRef = useRef<HTMLInputElement>(null)
+  useImperativeHandle(ref, () => ({
+    focus: () => {
+      if (inputRef && inputRef.current) {
+        inputRef.current.focus()
+      }
+    },
+  }))
+
+  return (
+    <Input
+      ref={inputRef}
+      value={value}
+      onChange={handleInputChange}
+      {...rest}
+    />
+  )
 }
 
-export default SearchInput
+export default forwardRef(SearchInput)

@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { useState, useRef } from 'react'
+import { useState, useRef, useEffect } from 'react'
 import { useDispatch } from 'react-redux'
 import debounce from 'lodash/debounce'
 import styled from 'styled-components'
@@ -8,7 +8,7 @@ import { useTypedSelector } from '../../store/reducer'
 import { findSuperHero } from '../reducer'
 import Error from '../../components/Error'
 import Loading from '../../components/Loading'
-import SearchInput from './SearchInput'
+import SearchInput, { SearchInputHandles } from './SearchInput'
 import SearchResult from './SearchResult'
 
 const Wrapper = styled.div`
@@ -39,12 +39,21 @@ const SearchHeroContainer = () => {
     debouncedFindSuperHero.current(query)
   }
 
+  const searchInputRef = useRef<SearchInputHandles>(null)
+
+  useEffect(() => {
+    if (searchInputRef.current) {
+      searchInputRef.current.focus()
+    }
+  })
+
   return (
     <Wrapper>
       <SearchInput
+        ref={searchInputRef}
         value={inputQuery}
         onChange={handleOnChange}
-        placeholder="type to search...."
+        placeholder="type to search..."
       />
       {state === 'loading' && <Loading />}
       {state === 'error' && error && inputQuery && <Error error={error} />}
