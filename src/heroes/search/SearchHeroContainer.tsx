@@ -44,7 +44,7 @@ const SearchHeroContainer = () => {
     if (searchInputRef.current) {
       searchInputRef.current.focus()
     }
-  })
+  }, [])
 
   return (
     <Wrapper>
